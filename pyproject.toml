@@ -1,0 +1,12 @@
+[project]
+name = "thingdos-voxel"
+version = "0.1.0"
+description = "A small Minecraft-style voxel sandbox written in Python."
+requires-python = ">=3.10"
+dependencies = [
+    "pillow",
+    "ursina",
+]
+
+[tool.uv]
+package = false
