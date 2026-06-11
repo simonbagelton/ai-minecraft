@@ -58,5 +58,25 @@ def summarize(path: Path) -> None:
     print("top colors", colors[:8])
 
 
+def render_world() -> Path:
+    for child in camera.ui.children:
+        child.enabled = False
+    main.selector.enabled = False
+    camera.enabled = True
+    camera.parent = scene
+    camera.position = (0, main.terrain_height(0, 0) + 8, -12)
+    camera.look_at(Vec3(0, main.terrain_height(0, 0), 0))
+    camera.orthographic = False
+
+    for _ in range(8):
+        base.graphicsEngine.renderFrame()
+
+    out = Path("tmp_texture_probe") / "world.png"
+    out.parent.mkdir(exist_ok=True)
+    base.screenshot(str(out), defaultFilename=False)
+    return out
+
+
 if __name__ == "__main__":
     summarize(render_atlas_quad())
+    summarize(render_world())
