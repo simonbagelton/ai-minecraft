@@ -78,5 +78,5 @@ def render_world() -> Path:
 
 
 if __name__ == "__main__":
-    summarize(render_atlas_quad())
     summarize(render_world())
+    summarize(render_atlas_quad())
